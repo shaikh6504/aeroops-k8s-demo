@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aeroops-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: aeroops
+  template:
+    metadata:
+      labels:
+        app: aeroops
+    spec:
+      containers:
+        - name: aeroops-api
+          image: shafshaikh1/aerooops-api:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
